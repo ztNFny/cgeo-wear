@@ -2,16 +2,13 @@ apply plugin: 'com.android.application'
 
 android {
     signingConfigs {
-        Release {
-            storeFile file('E:/Development/cgeoWear/Keystores/keystore-release.jks')
-        }
     }
-    compileSdkVersion 23
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 27
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.javadog.cgeowear"
-        minSdkVersion 20
-        targetSdkVersion 23
+        minSdkVersion 26
+        targetSdkVersion 27
         versionCode 6
         versionName "2.1.1"
     }
@@ -24,10 +21,14 @@ android {
 }
 
 dependencies {
-    compile 'com.google.android.support:wearable:+'
-    compile project(':locationUtils')
-    compile(project(':wearmessagedataset')) {
-        exclude group: 'com.google.android.gms', module: 'play-services-wearable'
-    }
-    compile 'com.google.android.gms:play-services-wearable:7.8.+'
+    implementation project(':locationUtils')
+    implementation project(':wearmessagedataset')
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
+    implementation 'com.google.android.support:wearable:2.4.0'
+    implementation 'com.google.android.gms:play-services-wearable:16.0.1'
+    implementation 'com.android.support:percent:27.1.1'
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.android.support:wear:27.1.1'
+    compileOnly 'com.google.android.wearable:wearable:2.4.0'
 }
