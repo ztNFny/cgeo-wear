@@ -7,8 +7,8 @@ android {
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.javadog.cgeowear"
-        minSdkVersion 26
-        targetSdkVersion 27
+        minSdkVersion 23
+        targetSdkVersion 23
         versionCode 7
         versionName "2.1.2"
     }
