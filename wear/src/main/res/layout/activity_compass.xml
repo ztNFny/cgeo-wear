@@ -20,7 +20,7 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="@drawable/background_wear"
+	android:background="@color/black"
 	tools:context=".cgeoWear"
 	tools:deviceIds="wear">
 
@@ -29,50 +29,57 @@
 		android:layout_height="match_parent"
 		app:layout_box="all">
 
-		<RelativeLayout
-			android:id="@+id/rl_top_portion"
+		<LinearLayout
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:background="@color/color_transparent_grey">
+			android:layout_height="match_parent"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/textview_distance"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="@dimen/wear_text_margin"
+				android:layout_weight="1"
+				android:text="20m"
+				android:textAlignment="center"
+				android:gravity="center"
+				android:textColor="@android:color/white"
+				android:textSize="30sp"
+				android:textStyle="bold" />
+
+			<ImageView
+				android:id="@+id/compass"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerInParent="true"
+				android:layout_weight="10"
+				android:contentDescription="@string/description_compass"
+				android:paddingTop="@dimen/compass_padding"
+				android:paddingBottom="@dimen/compass_padding"
+				android:scaleType="centerInside"
+				android:src="@drawable/compass" />
+
+			<TextView
+				android:id="@+id/textview_cache_name"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@color/color_transparent_grey"
+				android:ellipsize="marquee"
+				android:gravity="center"
+				android:scrollHorizontally="true"
+				android:text="GCxxxxx"
+				android:textAlignment="center"
+				android:textColor="@color/white"
+				android:textSize="24sp" />
 
 			<TextView
 				android:id="@+id/textview_geocode"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginStart="@dimen/wear_text_margin"/>
-
-			<TextView
-				android:id="@+id/textview_distance"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_alignParentTop="true"
-				android:layout_alignParentEnd="true"
-				android:layout_marginEnd="@dimen/wear_text_margin"/>
-
-		</RelativeLayout>
-
-		<TextView
-			android:id="@+id/textview_cache_name"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:background="@color/color_transparent_grey"
-			android:layout_alignParentBottom="true"
-			android:gravity="center"
-			android:ellipsize="marquee"
-			android:scrollHorizontally="true"/>
-
-		<ImageView
-			android:id="@+id/compass"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_above="@id/textview_cache_name"
-			android:layout_below="@id/rl_top_portion"
-			android:paddingTop="@dimen/compass_padding"
-			android:paddingBottom="@dimen/compass_padding"
-			android:layout_centerInParent="true"
-			android:scaleType="centerInside"
-			android:src="@drawable/compass"
-			android:contentDescription="@string/description_compass"/>
+				android:layout_marginStart="@dimen/wear_text_margin"
+				android:textColor="@android:color/white" />
+		</LinearLayout>
 
 	</RelativeLayout>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<dimen name="compass_padding">10dp</dimen>
+	<dimen name="compass_padding">4dp</dimen>
 	<dimen name="wear_text_margin">4dp</dimen>
 	<dimen name="top_portion_padding">60dp</dimen>
 	<dimen name="bottom_portion_padding">10dp</dimen>
