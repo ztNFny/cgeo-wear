@@ -62,11 +62,11 @@ public class MobileService extends Service
 	/**
 	 * Constants from c:geo's Android Wear API.
 	 */
-	private static final String PREFIX = "cgeo.geocaching.intent.extra.";
-	private static final String EXTRA_CACHE_NAME = PREFIX + "name";
-	private static final String EXTRA_GEOCODE = PREFIX + "geocode";
-	private static final String EXTRA_LATITUDE = PREFIX + "latitude";
-	private static final String EXTRA_LONGITUDE = PREFIX + "longitude";
+	public static final String PREFIX = "cgeo.geocaching.intent.extra.";
+	public static final String EXTRA_CACHE_NAME = PREFIX + "name";
+	public static final String EXTRA_GEOCODE = PREFIX + "geocode";
+	public static final String EXTRA_LATITUDE = PREFIX + "latitude";
+	public static final String EXTRA_LONGITUDE = PREFIX + "longitude";
 
 	private GoogleApiClient apiClient;
 	private WearInterface wearInterface;
