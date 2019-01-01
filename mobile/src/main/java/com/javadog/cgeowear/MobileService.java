@@ -67,6 +67,9 @@ public class MobileService extends Service
 	public static final String EXTRA_GEOCODE = PREFIX + "geocode";
 	public static final String EXTRA_LATITUDE = PREFIX + "latitude";
 	public static final String EXTRA_LONGITUDE = PREFIX + "longitude";
+	public static final String EXTRA_CACHE_SIZE = PREFIX + "site";
+	public static final String EXTRA_CACHE_DIFFICULTY = PREFIX + "difficulty";
+	public static final String EXTRA_CACHE_TERRAIN = PREFIX + "terrain";
 
 	private GoogleApiClient apiClient;
 	private WearInterface wearInterface;
