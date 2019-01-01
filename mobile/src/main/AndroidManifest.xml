@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
 
-        <activity
+        <!-- <activity
             android:name=".OsmAndProxy"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoDisplay">
@@ -43,7 +43,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity>
+        </activity> -->
 
         <activity
             android:name=".RadarProxy"
