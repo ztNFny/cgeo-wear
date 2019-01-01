@@ -24,10 +24,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
@@ -62,7 +64,7 @@ public class CompassActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_compass);
+		setContentView(R.layout.activity_compass_radar);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON |
 				WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 	}
@@ -118,11 +120,91 @@ public class CompassActivity extends Activity {
 	/**
 	 * Populates all fields on the screen.
 	 */
-	private void populateScreen(final String cacheName, final String geocode,
-								final float distance, final float direction) {
+	private void populateScreen(final String cacheName, final String geocode, final float distance, final float direction, final String difficulty, final String terrain, final String size) {
 		tv_cacheName.setText(cacheName);
-		tv_geocode.setText(geocode);
-		tv_ratingDifficulty.setText(geocode);
+		if ("".equals(size)) {
+			tv_geocode.setVisibility(View.INVISIBLE);
+		} else {
+			tv_geocode.setVisibility(View.VISIBLE);
+			tv_geocode.setText(geocode);
+		}
+		if ("".equals(difficulty)) {
+			tv_ratingDifficulty.setVisibility(View.INVISIBLE);
+		} else {
+			String difficultyColor = "#000000";
+			switch (difficulty.substring(0, 1)) {
+				case "1":
+					difficultyColor = "#00992A";
+					break;
+				case "2":
+					difficultyColor = "#009BB8";
+					break;
+				case "3":
+					difficultyColor = "#085388";
+					break;
+				case "4":
+					difficultyColor = "#EF7E26";
+					break;
+				case "5":
+					difficultyColor = "#940015";
+					break;
+			}
+			tv_ratingDifficulty.setVisibility(View.VISIBLE);
+			tv_ratingDifficulty.setText(difficulty);
+			tv_ratingDifficulty.setSolidColor(difficultyColor);
+		}
+		if ("".equals(terrain)) {
+			tv_ratingTerrain.setVisibility(View.INVISIBLE);
+		} else {
+			String terrainColor = "#000000";
+			switch (terrain.substring(0, 1)) {
+				case "1":
+					terrainColor = "#00992A";
+					break;
+				case "2":
+					terrainColor = "#009BB8";
+					break;
+				case "3":
+					terrainColor = "#085388";
+					break;
+				case "4":
+					terrainColor = "#EF7E26";
+					break;
+				case "5":
+					terrainColor = "#940015";
+					break;
+			}
+			tv_ratingTerrain.setVisibility(View.VISIBLE);
+			tv_ratingTerrain.setText(terrain);
+			tv_ratingTerrain.setSolidColor(terrainColor);
+		}
+		if ("".equals(size)) {
+			tv_cacheSize.setVisibility(View.INVISIBLE);
+		} else {
+			String sizeFirstChar = size.substring(0, 1);
+			// Micro, Small, Regular, Large, Other
+			String sizeColor = "#000000";
+			switch (sizeFirstChar) {
+				case "M":
+					sizeColor = "#00992A";
+					break;
+				case "S":
+					sizeColor = "#009BB8";
+					break;
+				case "R":
+					sizeColor = "#085388";
+					break;
+				case "L":
+					sizeColor = "#EF7E26";
+					break;
+				case "O":
+					sizeColor = "#940015";
+					break;
+			}
+			tv_cacheSize.setVisibility(View.VISIBLE);
+			tv_cacheSize.setText(sizeFirstChar);
+			tv_cacheSize.setSolidColor(sizeColor);
+		}
 		setDistanceFormatted(distance);
 		rotateCompass(direction);
 	}
@@ -147,7 +229,7 @@ public class CompassActivity extends Activity {
 			service = binder.getService();
 			serviceBound = true;
 
-			populateScreen(service.getCacheName(), service.getGeocode(), service.getDistance(), service.getDirection());
+			populateScreen(service.getCacheName(), service.getGeocode(), service.getDistance(), service.getDirection(), service.getDifficulty(), service.getTerrain(), service.getSize());
 		}
 
 		@Override
@@ -220,7 +302,7 @@ public class CompassActivity extends Activity {
 	@Override
 	protected void onNewIntent(Intent intent) {
 		if(serviceBound) {
-			populateScreen(service.getCacheName(), service.getGeocode(), service.getDistance(), service.getDirection());
+            populateScreen(service.getCacheName(), service.getGeocode(), service.getDistance(), service.getDirection(), service.getDifficulty(), service.getTerrain(), service.getSize());
 		}
 	}
 

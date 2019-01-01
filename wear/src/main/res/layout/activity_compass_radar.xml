@@ -60,7 +60,7 @@
 					android:orientation="horizontal">
 
 					<LinearLayout
-						android:layout_width="30sp"
+						android:layout_width="24sp"
 						android:layout_height="match_parent"
 						android:layout_weight="1"
 						android:gravity="right"
@@ -71,17 +71,25 @@
 							android:id="@+id/ratingDifficulty"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
-							android:text="11"
 							android:gravity="center"
-							android:padding="3dp"/>
+							android:padding="3dp"
+							android:text="11"
+							android:textAlignment="center"
+							android:textColor="@color/white"
+							android:textSize="18sp"
+							android:textStyle="bold" />
 
 						<com.javadog.cgeowear.CircularTextView
 							android:id="@+id/ratingTerrain"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
-							android:text="11"
 							android:gravity="center"
-							android:padding="3dp"/>
+							android:padding="3dp"
+							android:text="11"
+							android:textAlignment="center"
+							android:textColor="@color/white"
+							android:textSize="18sp"
+							android:textStyle="bold" />
 					</LinearLayout>
 
 					<TextView
@@ -98,18 +106,23 @@
 						android:textStyle="bold" />
 
 					<LinearLayout
-						android:layout_width="30sp"
+						android:layout_width="24sp"
 						android:layout_height="match_parent"
 						android:layout_weight="1"
+						android:gravity="center_vertical"
 						android:orientation="vertical">
 
 						<com.javadog.cgeowear.CircularTextView
 							android:id="@+id/size"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
-							android:text="11"
 							android:gravity="center"
-							android:padding="3dp"/>
+							android:padding="3dp"
+							android:text="11"
+							android:textAlignment="center"
+							android:textColor="@color/white"
+							android:textSize="18sp"
+							android:textStyle="bold" />
 					</LinearLayout>
 
 				</LinearLayout>

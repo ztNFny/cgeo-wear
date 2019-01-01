@@ -64,11 +64,14 @@ public class WearInterface implements ResultCallback<MessageApi.SendMessageResul
 	 * @param distance  The distance to the geocache.
 	 * @param direction The direction to the geocache.
 	 */
-	public void initTracking(String cacheName, String geocode, float distance, float direction, boolean watchCompass,
+	public void initTracking(String cacheName, String geocode, float distance, float direction, String difficulty, String terrain, String size, boolean watchCompass,
 							 Location cacheLocation) throws ConnectException {
 		MessageDataset dataSet = new MessageDataset.Builder()
 				.cacheName(cacheName)
 				.geocode(geocode)
+				.difficulty(difficulty)
+				.terrain(terrain)
+				.size(size)
 				.distance(distance)
 				.direction(direction)
 				.cacheLocation(cacheLocation)
