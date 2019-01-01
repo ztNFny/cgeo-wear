@@ -25,6 +25,9 @@ import com.google.android.gms.wearable.DataMap;
 public class MessageDataset {
 	public static final String KEY_CACHE_NAME = "cacheName";
 	public static final String KEY_GEOCODE = "geocode";
+	public static final String KEY_SIZE = "size";
+	public static final String KEY_DIFFICULTY = "difficulty";
+	public static final String KEY_TERRAIN = "terrain";
 	public static final String KEY_WATCH_COMPASS = "useWatchCompass";
 
 	public static final String KEY_LOCATION = "location";
@@ -38,7 +41,7 @@ public class MessageDataset {
 	public static final String KEY_CACHE_LATITUDE = "cacheLatitude";
 	public static final String KEY_CACHE_LONGITUDE = "cacheLongitude";
 
-	private final String cacheName, geocode;
+	private final String cacheName, geocode, difficulty, terrain, size;
 	private final float distance, direction;
 	private Location location;
 	private Location cacheLocation;
@@ -47,18 +50,24 @@ public class MessageDataset {
 	/**
 	 * Do not call constructors directly, use MessageDataSet.Builder to obtain a new instance.
 	 */
-	private MessageDataset(String name, String code, float dist, float dir, boolean watchCompass) {
+	private MessageDataset(String name, String code, String diff, String terr, String siz, float dist, float dir, boolean watchCompass) {
 		cacheName = name;
 		geocode = code;
+		difficulty = diff;
+		terrain = terr;
+		size = siz;
 		distance = dist;
 		direction = dir;
 		useWatchCompass = watchCompass;
 	}
 
-	private MessageDataset(String name, String code, float dist, float dir, boolean watchCompass, Location loc,
+	private MessageDataset(String name, String code, String diff, String terr, String siz, float dist, float dir, boolean watchCompass, Location loc,
 						   Location cacheLoc) {
 		cacheName = name;
 		geocode = code;
+		difficulty = diff;
+		terrain = terr;
+		size = siz;
 		distance = dist;
 		direction = dir;
 		useWatchCompass = watchCompass;
@@ -71,6 +80,9 @@ public class MessageDataset {
 
 		map.putString(KEY_CACHE_NAME, cacheName);
 		map.putString(KEY_GEOCODE, geocode);
+		map.putString(KEY_DIFFICULTY, difficulty);
+		map.putString(KEY_TERRAIN, terrain);
+		map.putString(KEY_SIZE, size);
 		map.putFloat(KEY_DISTANCE, distance);
 		map.putFloat(KEY_DIRECTION, direction);
 		map.putBoolean(KEY_WATCH_COMPASS, useWatchCompass);
@@ -92,6 +104,9 @@ public class MessageDataset {
 		this(
 				map.getString(KEY_CACHE_NAME),
 				map.getString(KEY_GEOCODE),
+				map.getString(KEY_DIFFICULTY),
+				map.getString(KEY_TERRAIN),
+				map.getString(KEY_SIZE),
 				map.getFloat(KEY_DISTANCE),
 				map.getFloat(KEY_DIRECTION),
 				map.getBoolean(KEY_WATCH_COMPASS)
@@ -115,6 +130,18 @@ public class MessageDataset {
 
 	public String getGeocode() {
 		return geocode;
+	}
+
+	public String getDifficulty() {
+		return difficulty;
+	}
+
+	public String getTerrain() {
+		return terrain;
+	}
+
+	public String getSize() {
+		return size;
 	}
 
 	public float getDistance() {
@@ -146,7 +173,7 @@ public class MessageDataset {
 	}
 
 	public static class Builder {
-		private String nestedCacheName, nestedGeocode;
+		private String nestedCacheName, nestedGeocode, nestedDifficulty, nestedTerrain, nestedSize;
 		private float nestedDistance, nestedDirection;
 		private boolean nestedUseWatchCompass;
 		private Location nestedLocation, nestedCacheLocation;
@@ -158,6 +185,21 @@ public class MessageDataset {
 
 		public Builder geocode(String code) {
 			nestedGeocode = code;
+			return this;
+		}
+
+		public Builder difficulty(String difficulty) {
+			nestedDifficulty = difficulty;
+			return this;
+		}
+
+		public Builder terrain(String terrain) {
+			nestedTerrain = terrain;
+			return this;
+		}
+
+		public Builder size(String size) {
+			nestedSize = size;
 			return this;
 		}
 
@@ -188,7 +230,7 @@ public class MessageDataset {
 
 		public MessageDataset build() {
 			return new MessageDataset(
-					nestedCacheName, nestedGeocode, nestedDistance, nestedDirection, nestedUseWatchCompass,
+					nestedCacheName, nestedGeocode, nestedDifficulty, nestedTerrain, nestedSize, nestedDistance, nestedDirection, nestedUseWatchCompass,
 					nestedLocation, nestedCacheLocation);
 		}
 	}

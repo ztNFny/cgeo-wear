@@ -56,7 +56,7 @@ public class cgeoWearService extends Service
 
 	private final IBinder iBinder = new LocalBinder();
 
-	private String cacheName, geocode;
+	private String cacheName, geocode, difficulty, terrain, size;
 	private float distance, direction;
 	private boolean useWatchCompass;
 
@@ -111,7 +111,7 @@ public class cgeoWearService extends Service
 				.addAction(R.drawable.ic_stop_navigation, getString(R.string.notification3_label),
 						killAppPendingIntent)
 				.extend(new NotificationCompat.WearableExtender()
-						.setBackground(BitmapFactory.decodeResource(getResources(), R.drawable.background_image)));
+						.setBackground(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher)));
 
 		startForeground(NOTIFICATION_ID, notificationBuilder.build());
 	}
@@ -149,6 +149,9 @@ public class cgeoWearService extends Service
 	 */
 	private void initLocalVars(final Intent startIntent) {
 		cacheName = startIntent.getStringExtra(MessageDataset.KEY_CACHE_NAME);
+		difficulty = startIntent.getStringExtra(MessageDataset.KEY_DIFFICULTY);
+		terrain = startIntent.getStringExtra(MessageDataset.KEY_TERRAIN);
+		size = startIntent.getStringExtra(MessageDataset.KEY_SIZE);
 		geocode = startIntent.getStringExtra(MessageDataset.KEY_GEOCODE);
 		distance = startIntent.getFloatExtra(MessageDataset.KEY_DISTANCE, 0f);
 		direction = startIntent.getFloatExtra(MessageDataset.KEY_DIRECTION, 0f);
@@ -324,5 +327,17 @@ public class cgeoWearService extends Service
 
 	public float getDirection() {
 		return direction;
+	}
+
+	public String getDifficulty() {
+		return difficulty;
+	}
+
+	public String getTerrain() {
+		return terrain;
+	}
+
+	public String getSize() {
+		return size;
 	}
 }

@@ -67,7 +67,7 @@ public class MobileService extends Service
 	public static final String EXTRA_GEOCODE = PREFIX + "geocode";
 	public static final String EXTRA_LATITUDE = PREFIX + "latitude";
 	public static final String EXTRA_LONGITUDE = PREFIX + "longitude";
-	public static final String EXTRA_CACHE_SIZE = PREFIX + "site";
+	public static final String EXTRA_CACHE_SIZE = PREFIX + "size";
 	public static final String EXTRA_CACHE_DIFFICULTY = PREFIX + "difficulty";
 	public static final String EXTRA_CACHE_TERRAIN = PREFIX + "terrain";
 
@@ -75,7 +75,7 @@ public class MobileService extends Service
 	private WearInterface wearInterface;
 	private LocationUtils locationUtils;
 
-	private String cacheName;
+	private String cacheName, difficulty, terrain, size;
 	private String geocode;
 	private boolean useWatchCompass;
 	private Location geocacheLocation;
@@ -87,6 +87,9 @@ public class MobileService extends Service
 			if(INTENT_INIT.equals(action)) {
 				cacheName = intent.getStringExtra(EXTRA_CACHE_NAME);
 				geocode = intent.getStringExtra(EXTRA_GEOCODE);
+				size = intent.getStringExtra(EXTRA_CACHE_SIZE);
+				difficulty = intent.getStringExtra(EXTRA_CACHE_DIFFICULTY);
+				terrain = intent.getStringExtra(EXTRA_CACHE_TERRAIN);
 
 				final double latitude = intent.getDoubleExtra(EXTRA_LATITUDE, 0d);
 				final double longitude = intent.getDoubleExtra(EXTRA_LONGITUDE, 0d);
@@ -276,7 +279,7 @@ public class MobileService extends Service
 				Message m = new Message();
 				try {
 					wearInterface = new WearInterface(apiClient, connectedWearDevices.iterator().next());
-					wearInterface.initTracking(cacheName, geocode, 0f, 0f, useWatchCompass, geocacheLocation);
+					wearInterface.initTracking(cacheName, geocode, 0f, 0f, difficulty, terrain, size, useWatchCompass, geocacheLocation);
 					m.obj = MESSAGE_NAVIGATING_NOW;
 
 				} catch(ConnectException e) {

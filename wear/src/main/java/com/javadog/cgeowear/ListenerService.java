@@ -48,6 +48,9 @@ public class ListenerService extends WearableListenerService {
 			i.putExtra(MessageDataset.KEY_CACHE_NAME, Dataset.getCacheName());
 			i.putExtra(MessageDataset.KEY_GEOCODE, Dataset.getGeocode());
 			i.putExtra(MessageDataset.KEY_DISTANCE, Dataset.getDistance());
+			i.putExtra(MessageDataset.KEY_DIFFICULTY, Dataset.getDifficulty());
+			i.putExtra(MessageDataset.KEY_TERRAIN, Dataset.getTerrain());
+			i.putExtra(MessageDataset.KEY_SIZE, Dataset.getSize());
 			i.putExtra(MessageDataset.KEY_DIRECTION, Dataset.getDirection());
 			i.putExtra(MessageDataset.KEY_WATCH_COMPASS, Dataset.getWatchCompassPref());
 			i.putExtra(MessageDataset.KEY_CACHE_LOCATION, Dataset.getCacheLocation());

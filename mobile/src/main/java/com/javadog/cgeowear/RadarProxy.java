@@ -20,8 +20,8 @@ public class RadarProxy extends Activity {
             String cacheName = intent.getStringExtra("name");
             String geocode = intent.getStringExtra("code");
             String cacheSize = intent.getStringExtra("size");
-            String ratingTerrain = intent.getStringExtra("terrain");
-            String ratingDifficulty = intent.getStringExtra("difficulty");
+            String ratingTerrain = ((Float)intent.getFloatExtra("terrain", 0)).toString();
+            String ratingDifficulty = ((Float)intent.getFloatExtra("difficulty", 0)).toString();
 
             final Intent launchIntent = new Intent(INTENT_ACTION);
             launchIntent.setPackage(INTENT_PACKAGE);
