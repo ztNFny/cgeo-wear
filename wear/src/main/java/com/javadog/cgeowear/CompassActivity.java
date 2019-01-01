@@ -50,6 +50,9 @@ public class CompassActivity extends Activity {
 	private TextView tv_cacheName;
 	private TextView tv_geocode;
 	private TextView tv_distance;
+	private CircularTextView tv_ratingDifficulty;
+	private CircularTextView tv_ratingTerrain;
+	private CircularTextView tv_cacheSize;
 	private ImageView iv_compass;
 
 	private float currentRotation;
@@ -107,6 +110,9 @@ public class CompassActivity extends Activity {
 		tv_geocode = (TextView) findViewById(R.id.textview_geocode);
 		tv_distance = (TextView) findViewById(R.id.textview_distance);
 		iv_compass = (ImageView) findViewById(R.id.compass);
+		tv_cacheSize = (CircularTextView) findViewById(R.id.size);
+		tv_ratingDifficulty = (CircularTextView) findViewById(R.id.ratingDifficulty);
+		tv_ratingTerrain = (CircularTextView) findViewById(R.id.ratingTerrain);
 	}
 
 	/**
@@ -116,6 +122,7 @@ public class CompassActivity extends Activity {
 								final float distance, final float direction) {
 		tv_cacheName.setText(cacheName);
 		tv_geocode.setText(geocode);
+		tv_ratingDifficulty.setText(geocode);
 		setDistanceFormatted(distance);
 		rotateCompass(direction);
 	}
@@ -169,7 +176,7 @@ public class CompassActivity extends Activity {
 	 * @param dist The distance to the geocache, in meters.
 	 */
 	private void setDistanceFormatted(final float dist) {
-		DecimalFormat format = new DecimalFormat("0'm'");
+		DecimalFormat format = new DecimalFormat("0");
 		tv_distance.setText(format.format(dist));
 	}
 
