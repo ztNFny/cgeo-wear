@@ -7,7 +7,7 @@
 		Just use \'Navigate -> Android Wear\' from a cache listing in c:geo.</string>
 
 	<!-- Ongoing Notification Text -->
-	<string name="notification1_body">Navigating - Swipe left for options</string>
+	<string name="notification1_body">Navigating</string>
 	<string name="notification2_label">Show Compass</string>
 	<string name="notification3_label">Stop Navigating</string>
 
